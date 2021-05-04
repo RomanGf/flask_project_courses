@@ -26,8 +26,8 @@ def put(id_):
         return jsonify({'message': 'Not found'}), 404
     c.name = request.json.get('name')
     c.amount = request.json.get('amount')
-    # c.course_end = request.json.get('course_end')
-    # c.course_start = request.json.get('course_end')
+    c.course_start = datetime.strptime(request.json.get('course_start'), '%d/%m/%y')
+    c.course_end = datetime.strptime(request.json.get('course_end'), '%d/%m/%y')
     db.session.commit()
     return jsonify({'message': 'The course updated'})
 
